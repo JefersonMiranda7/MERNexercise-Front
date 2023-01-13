@@ -1,3 +1,6 @@
+.sass-cache
+.vscode
+
 # Compiled class file
 *.class
 
@@ -26,8 +29,15 @@ hs_err_pid*
 /node_modules
 /.pnp
 .pnp.js
-
 package-lock.json
+
+# testing
+/coverage
+
+# production
+/build
+/idea
+/.idea
 
 # misc
 .DS_Store
@@ -39,3 +49,6 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+layout.css
+pages.css
