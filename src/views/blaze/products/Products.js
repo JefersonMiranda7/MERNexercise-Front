@@ -100,7 +100,6 @@ const Products = () => {
     if (action === 'Edit') setVisibleEdit(true)
     else setVisibleDelete(true)
   }
-
   
   useEffect ( () => {
     pGet();
@@ -207,7 +206,7 @@ const Products = () => {
             </CModal>
             { flagSuccessAdd && 
               <CCol sm='12'>
-                <CAlert color="success" dismissible>Se ha agregado el artículo correctamente.</CAlert>
+                <CAlert color="success" dismissible>Product has been added successfully!</CAlert>
               </CCol>}
             
             {/* Edit modal */}
@@ -217,15 +216,15 @@ const Products = () => {
               </CModalHeader>
               <CModalBody>
                 <CFormFloating className="mb-3">
-                  <CFormInput type="name" id="floatingName" name='name' onChange={handleChange} value={newProduct && newProduct.name}/>
+                  <CFormInput type="name" id="floatingName" name='name' onChange={handleChange} value={newProduct.name}/>
                   <CFormLabel htmlFor="floatingName">Name</CFormLabel>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
-                  <CFormInput type="category" id="floatingCategory" name='category' onChange={handleChange} value={newProduct && newProduct.category}/>
+                  <CFormInput type="category" id="floatingCategory" name='category' onChange={handleChange} value={newProduct.category}/>
                   <CFormLabel htmlFor="floatingCategory">Category</CFormLabel>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
-                  <CFormInput type="unitPrice" id="floatingUnitPrice" name='unitPrice' onChange={handleChange} value={newProduct && newProduct.unitPrice}/>
+                  <CFormInput type="unitPrice" id="floatingUnitPrice" name='unitPrice' onChange={handleChange} value={newProduct.unitPrice}/>
                   <CFormLabel htmlFor="floatingUnitPrice">Unit Price</CFormLabel>
                 </CFormFloating>
               </CModalBody>
@@ -240,7 +239,7 @@ const Products = () => {
             </CModal>
             { flagSuccessEdit && 
               <CCol sm='12'>
-                <CAlert  color="success" dismissible>Se ha editado el artículo correctamente.</CAlert>
+                <CAlert  color="success" dismissible>Product has been edited successfully!</CAlert>
               </CCol>}
 
               {/* Delete modal */}
@@ -262,7 +261,7 @@ const Products = () => {
             </CModal>
             { flagSuccessDelete && 
               <CCol sm='12'>
-                <CAlert  color="success" dismissible>Se ha eliminado el artículo correctamente.</CAlert>
+                <CAlert  color="success" dismissible>Product has been deleted successfully!</CAlert>
               </CCol>}
           </CCardBody>
         </CCard>
