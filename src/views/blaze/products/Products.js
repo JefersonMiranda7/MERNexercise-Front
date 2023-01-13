@@ -34,8 +34,7 @@ const Products = () => {
   const [flagSuccessAdd, setFlagSuccessAdd] = useState(false)
   const [flagSuccessEdit, setFlagSuccessEdit] = useState(false)
   const [flagSuccessDelete, setFlagSuccessDelete] = useState(false)
-  const [newProduct, setNewProduct] = useState({ //gestorSeleccionado
-    idProduct: 0,
+  const [newProduct, setNewProduct] = useState({ //for edit mode as well
     name: '',
     category: '',
     unitPrice: 0.0,
@@ -43,13 +42,12 @@ const Products = () => {
   })
   const url = 'http://localhost:5000/products/';
 
-  //Cambio en el input
   const handleChange = (e) => {
     const {name, value} = e.target
-    setNewProduct({ ...newProduct, [name]: value })
+    if (name === 'unitPrice') setNewProduct({ ...newProduct, [name]: parseFloat(value) })
+    else setNewProduct({ ...newProduct, [name]: value })
   }
 
-  //Peticiones
   const pGet = async () => {
     await axios.get(url)
     .then (response => {
@@ -61,7 +59,6 @@ const Products = () => {
   }
 
   const pPost = async () => {
-    newProduct.unitPrice = parseFloat(newProduct.unitPrice)
     await axios.post(url, newProduct) //url and body
     .then (response => {
       setVisibleAdd(false)
@@ -73,7 +70,6 @@ const Products = () => {
   }
 
   const pPut = async () => {
-    newProduct.unitPrice = parseFloat(newProduct.unitPrice)
     await axios.put(url + newProduct.idProduct, newProduct) //url and body
     .then (response => {
       setVisibleEdit(false)
@@ -138,7 +134,7 @@ const Products = () => {
               Products
             </p>
             <CCol className='mb-2' style={{display:'flex', justifyContent:'right'}}>
-              <CButton color={'primary'} onClick={() => setVisibleAdd(true)}>
+              <CButton color={'primary'} shape="rounded-pill" onClick={() => setVisibleAdd(true)}>
                 Create Product
               </CButton>
             </CCol>
@@ -163,11 +159,11 @@ const Products = () => {
                     <CTableDataCell>$ {product.unitPrice}</CTableDataCell>
                     <CTableDataCell>{product.active ? 'Active' : 'Inactive'}</CTableDataCell>
                     <CTableDataCell>
-                      <CButton color={'secondary'} onClick={() => onSelectedProduct(product, 'Edit')}>
+                      <CButton color={'secondary'} shape="rounded-pill" onClick={() => onSelectedProduct(product, 'Edit')}>
                         Edit
                       </CButton>
                       {' '}
-                      <CButton color={'danger'} onClick={() => onSelectedProduct(product, 'Delete')}>
+                      <CButton color={'danger'} shape="rounded-pill" onClick={() => onSelectedProduct(product, 'Delete')}>
                         Delete
                       </CButton>
                     </CTableDataCell>
@@ -242,7 +238,7 @@ const Products = () => {
                 <CAlert  color="success" dismissible>Product has been edited successfully!</CAlert>
               </CCol>}
 
-              {/* Delete modal */}
+            {/* Delete modal */}
             <CModal alignment="center" visible={visibleDelete} onClose={() => setVisibleDelete(false)}>
               <CModalHeader>
                 <CModalTitle>Delete Product</CModalTitle>
