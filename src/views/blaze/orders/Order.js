@@ -256,43 +256,43 @@ const Order = () => {
             }
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingSubtotal" name='subtotal' value={orderSelected.subtotal}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingSubtotal" name='subtotal' value={'$ ' + orderSelected.subtotal}/>
                 <CFormLabel style={{fontSize: 20, fontWeight: 'bold'}} htmlFor="floatingSubtotal">Subtotal</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingTotalTaxes" name='totalTaxes' value={orderSelected.totalTaxes}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingTotalTaxes" name='totalTaxes' value={'$ ' + orderSelected.totalTaxes}/>
                 <CFormLabel style={{fontSize: 20, fontWeight: 'bold'}} htmlFor="floatingTotalTaxes">Total Taxes</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="cityTax" id="floatingCityTax" name='cityTax' value={orderSelected.cityTax}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="cityTax" id="floatingCityTax" name='cityTax' value={'$ ' + orderSelected.cityTax}/>
                 <CFormLabel style={{fontSize: 17}} htmlFor="floatingCityTax">Total City Tax</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="countryTax" id="floatingCountryTax" name='countryTax' value={orderSelected.countryTax}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="countryTax" id="floatingCountryTax" name='countryTax' value={'$ ' + orderSelected.countryTax}/>
                 <CFormLabel style={{fontSize: 17}} htmlFor="floatingCountryTax">Total Country Tax</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="stateTax" id="floatingStateTax" name='stateTax' value={orderSelected.stateTax}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="stateTax" id="floatingStateTax" name='stateTax' value={'$ ' + orderSelected.stateTax}/>
                 <CFormLabel style={{fontSize: 17}} htmlFor="floatingStateTax">Total State Tax</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-1">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="federalTax" id="floatingFederalTax" name='federalTax' value={orderSelected.federalTax}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right'}} type="federalTax" id="floatingFederalTax" name='federalTax' value={'$ ' + orderSelected.federalTax}/>
                 <CFormLabel style={{fontSize: 17}} htmlFor="floatingFederalTax">Total Federal Tax</CFormLabel>
               </CFormFloating>
             </CCol>
             <CCol sm={12} style={{display:'flex', justifyContent:'right'}}>
               <CFormFloating className="mb-3">
-                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingTotalAmount" name='totalAmount' value={orderSelected.totalAmount}/>
+                <CFormInput readOnly style={{border: 'hidden', textAlign: 'right', fontWeight: 'bold'}} id="floatingTotalAmount" name='totalAmount' value={'$ ' + orderSelected.totalAmount}/>
                 <CFormLabel style={{fontSize: 20, fontWeight: 'bold'}} htmlFor="floatingTotalAmount">Total</CFormLabel>
               </CFormFloating>
             </CCol>
