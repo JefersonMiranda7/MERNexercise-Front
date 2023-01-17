@@ -101,6 +101,7 @@ const Order = () => {
     .catch (error => {
       console.log(error)
     })
+    pGetOrder();
   }
 
   const pPut = async () => {
@@ -143,6 +144,7 @@ const Order = () => {
     .catch (error => {
       console.log(error)
     })
+    pGetOrder();
   }
 
   const onSelectedOrderItem = (orderItem, action) => {
@@ -196,23 +198,19 @@ const Order = () => {
   }, [])
   
   useEffect ( () => {
-    pGetOrder();
-    pGetOrder();
+    pGet();
   }, [visibleEditOrder])
   
   useEffect ( () => { 
     pGet();
-    pGetOrder();
   }, [visibleDelete])
 
   useEffect ( () => { 
     pGet();
-    pGetOrder();
   }, [visibleEdit])
 
   useEffect ( () => { 
     pGet();
-    pGetOrder();
   }, [visibleAdd])
 
   return (
@@ -371,7 +369,7 @@ const Order = () => {
               </CModalFooter>
             </CModal>
             { flagSuccessEditOrder && 
-              <CCol sm='12'>
+              <CCol sm='12' className='mt-3'>
                 <CAlert color="success" dismissible>Order has been {actionMessage} successfully!</CAlert>
               </CCol>}
 
@@ -403,7 +401,7 @@ const Order = () => {
               </CModalFooter>
             </CModal>
             { flagSuccessAdd && 
-              <CCol sm='12'>
+              <CCol sm='12' className='mt-3'>
                 <CAlert color="success" dismissible>Order item has been added successfully!</CAlert>
               </CCol>}
             
@@ -432,7 +430,7 @@ const Order = () => {
               </CModalFooter>
             </CModal>
             { flagSuccessEdit && 
-              <CCol sm='12'>
+              <CCol sm='12' className='mt-3'>
                 <CAlert color="success" dismissible>Order item has been edited successfully!</CAlert>
               </CCol>}
 
@@ -454,7 +452,7 @@ const Order = () => {
               </CModalFooter>
             </CModal>
             { flagSuccessDelete && 
-              <CCol sm='12'>
+              <CCol sm='12' className='mt-3'>
                 <CAlert color="success" dismissible>Order item has been deleted successfully!</CAlert>
               </CCol>}
           </CCardBody>
