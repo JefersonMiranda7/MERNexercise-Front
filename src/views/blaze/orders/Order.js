@@ -199,18 +199,22 @@ const Order = () => {
   
   useEffect ( () => {
     pGet();
+    pGetOrder();
   }, [visibleEditOrder])
   
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleDelete])
 
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleEdit])
 
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleAdd])
 
   return (
