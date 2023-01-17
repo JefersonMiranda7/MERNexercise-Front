@@ -45,6 +45,7 @@ const Order = () => {
   const idOrderSelected = localStorage.getItem('idOrder');
   const [orderSelected, setOrderSelected] = useState({});
   const [productSelected, setProductSelected] = useState('');
+  const [unitPrice, setUnitPrice] = useState(0.0);
   const [newOrderItem, setNewOrderItem] = useState({ //for each product in order
     idProduct: 0,
     idOrder: parseInt(idOrderSelected),
@@ -80,6 +81,26 @@ const Order = () => {
     .catch (error => {
       console.log(error)
     })
+    
+    let obj = {
+      idOrder: parseInt(idOrderSelected),
+      idProduct: parseFloat(newOrderItem.idProduct),
+      quantity: parseFloat(newOrderItem.quantity),
+      subtotal: parseFloat(orderSelected.subtotal),
+      cityTax: parseFloat(orderSelected.cityTax),
+      countryTax: parseFloat(orderSelected.countryTax),
+      stateTax: parseFloat(orderSelected.stateTax),
+      federalTax: parseFloat(orderSelected.federalTax),
+      totalTaxes: parseFloat(orderSelected.totalTaxes),
+      totalAmount: parseFloat(orderSelected.totalAmount),
+      action: 'Add'
+    }
+    await axios.post(url + 'amounts', obj)
+    .then (response => {
+    })
+    .catch (error => {
+      console.log(error)
+    })
   }
 
   const pPut = async () => {
@@ -98,6 +119,26 @@ const Order = () => {
     .then (response => {
       setVisibleDelete(false)
       setFlagSuccessDelete(true)
+    })
+    .catch (error => {
+      console.log(error)
+    })
+
+    let obj = {
+      idOrder: parseInt(idOrderSelected),
+      idProduct: parseFloat(newOrderItem.idProduct),
+      quantity: parseFloat(newOrderItem.quantity),
+      subtotal: parseFloat(orderSelected.subtotal),
+      cityTax: parseFloat(orderSelected.cityTax),
+      countryTax: parseFloat(orderSelected.countryTax),
+      stateTax: parseFloat(orderSelected.stateTax),
+      federalTax: parseFloat(orderSelected.federalTax),
+      totalTaxes: parseFloat(orderSelected.totalTaxes),
+      totalAmount: parseFloat(orderSelected.totalAmount),
+      action: 'Delete'
+    }
+    await axios.post(url + 'amounts', obj)
+    .then (response => {
     })
     .catch (error => {
       console.log(error)
@@ -156,18 +197,22 @@ const Order = () => {
   
   useEffect ( () => {
     pGetOrder();
+    pGetOrder();
   }, [visibleEditOrder])
   
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleDelete])
 
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleEdit])
 
   useEffect ( () => { 
     pGet();
+    pGetOrder();
   }, [visibleAdd])
 
   return (
@@ -339,7 +384,7 @@ const Order = () => {
                 <CFormFloating className="mb-3">
                   <CFormSelect type="idProduct" id="floatingProduct" name='idProduct' onChange={handleChange}>
                     <option key={0} value={0}>Choose a product</option>
-                  { arrProducts.map (product => ( <option key={product.idProduct} value={product.idProduct}>{product.name}</option>))}
+                    { arrProducts.map (product => ( <option key={product.idProduct} value={product.idProduct} onClick={() => setUnitPrice(product.unitPrice)}>{product.name}</option>))}
                 </CFormSelect>
                   <CFormLabel style={{ fontSize: 12}} htmlFor="floatingCustomer">Product</CFormLabel>
                 </CFormFloating>
