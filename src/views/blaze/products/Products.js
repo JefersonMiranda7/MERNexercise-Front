@@ -23,7 +23,8 @@ import {
   CModalFooter,
   CAlert,
   CNav,
-  CNavLink
+  CNavLink,
+  CFormSelect
 } from '@coreui/react';
 
 const Products = () => {
@@ -44,8 +45,7 @@ const Products = () => {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    if (name === 'unitPrice') setNewProduct({ ...newProduct, [name]: parseFloat(value) })
-    else setNewProduct({ ...newProduct, [name]: value })
+    setNewProduct({ ...newProduct, [name]: value })
   }
 
   const pGet = async () => {
@@ -183,8 +183,14 @@ const Products = () => {
                   <CFormLabel htmlFor="floatingName">Name</CFormLabel>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
-                  <CFormInput type="category" id="floatingCategory" name='category' onChange={handleChange}/>
-                  <CFormLabel htmlFor="floatingCategory">Category</CFormLabel>
+                  <CFormSelect type="category" id="floatingCategory" name='category' onChange={handleChange}>
+                    <option key={0} value={0}>Choose a category</option>
+                    <option key={1} value={'Cakes'}>Cakes</option>
+                    <option key={2} value={'Candies'}>Candies</option>
+                    <option key={3} value={'Cookies'}>Cookies</option>
+                    <option key={4} value={'Desserts'}>Desserts</option>
+                    <option key={5} value={'Drinks'}>Drinks</option>
+                  </CFormSelect>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
                   <CFormInput type="unitPrice" id="floatingUnitPrice" name='unitPrice' onChange={handleChange}/>
@@ -216,8 +222,14 @@ const Products = () => {
                   <CFormLabel htmlFor="floatingName">Name</CFormLabel>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
-                  <CFormInput type="category" id="floatingCategory" name='category' onChange={handleChange} value={newProduct.category}/>
-                  <CFormLabel htmlFor="floatingCategory">Category</CFormLabel>
+                  <CFormSelect type="category" id="floatingCategory" name='category' onChange={handleChange} value={newProduct.category}>
+                    <option key={0} value={0}>Choose a category</option>
+                    <option key={1} value={'Cakes'}>Cakes</option>
+                    <option key={2} value={'Candies'}>Candies</option>
+                    <option key={3} value={'Cookies'}>Cookies</option>
+                    <option key={4} value={'Desserts'}>Desserts</option>
+                    <option key={5} value={'Drinks'}>Drinks</option>
+                  </CFormSelect>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
                   <CFormInput type="unitPrice" id="floatingUnitPrice" name='unitPrice' onChange={handleChange} value={newProduct.unitPrice}/>

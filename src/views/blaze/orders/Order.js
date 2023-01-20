@@ -59,7 +59,7 @@ const Order = () => {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    setNewOrderItem({ ...newOrderItem, [name]: parseInt(value) })
+    setNewOrderItem({ ...newOrderItem, [name]: value })
   }
 
   const pGet = async () => {
@@ -84,8 +84,8 @@ const Order = () => {
     
     let obj = {
       idOrder: parseInt(idOrderSelected),
-      idProduct: parseFloat(newOrderItem.idProduct),
-      quantity: parseFloat(newOrderItem.quantity),
+      idProduct: parseInt(newOrderItem.idProduct),
+      quantity: parseInt(newOrderItem.quantity),
       subtotal: parseFloat(orderSelected.subtotal),
       cityTax: parseFloat(orderSelected.cityTax),
       countryTax: parseFloat(orderSelected.countryTax),
@@ -127,8 +127,8 @@ const Order = () => {
 
     let obj = {
       idOrder: parseInt(idOrderSelected),
-      idProduct: parseFloat(newOrderItem.idProduct),
-      quantity: parseFloat(newOrderItem.quantity),
+      idProduct: parseInt(newOrderItem.idProduct),
+      quantity: parseInt(newOrderItem.quantity),
       subtotal: parseFloat(orderSelected.subtotal),
       cityTax: parseFloat(orderSelected.cityTax),
       countryTax: parseFloat(orderSelected.countryTax),
@@ -387,7 +387,7 @@ const Order = () => {
                   <CFormSelect type="idProduct" id="floatingProduct" name='idProduct' onChange={handleChange}>
                     <option key={0} value={0}>Choose a product</option>
                     { arrProducts.map (product => ( <option key={product.idProduct} value={product.idProduct} onClick={() => setUnitPrice(product.unitPrice)}>{product.name}</option>))}
-                </CFormSelect>
+                  </CFormSelect>
                   <CFormLabel style={{ fontSize: 12}} htmlFor="floatingCustomer">Product</CFormLabel>
                 </CFormFloating>
                 <CFormFloating className="mb-3">
